@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <title>Visting Card<br>Shaambhavi Manufacturers Pvt Ltd — Details & Sizes</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root {
+      --accent: #0b6b5b;
+      --muted: #3e6b60;
+      --card: #ffffff;
+      --bg1: #dff7ef;
+      --bg2: #b8e3d0;
+      --bg3: #f8fffb;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Segoe UI", Roboto, "Noto Sans", Arial;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      background-attachment: fixed;
+      color: var(--muted);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card);
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(10, 40, 30, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 26px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .meta {
+      margin-top: 6px;
+      color: #2f544b;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .line {
+      margin: 18px 0;
+      border-top: 1px dashed #dcebe4;
+    }
+
+    .info {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .pill {
+      background: #f1fbf8;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #e6f5ef;
+      font-weight: 600;
+      color: var(--accent);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(11, 107, 91, 0.2);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #0c7d6a;
+    }
+
+    button.secondary {
+      background: #eef8f4;
+      color: var(--accent);
+      border: 1px solid #d7efe6;
+      box-shadow: none;
+    }
+
+    .sizes-row {
+      display: flex;
+      gap: 10px;
+      padding: 12px;
+      overflow-x: auto;
+      margin-top: 18px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .size-item {
+      flex: 0 0 auto;
+      background: #fff;
+      border: 1px solid #e6f3ef;
+      padding: 12px 16px;
+      border-radius: 10px;
+      min-width: 120px;
+      text-align: center;
+      font-weight: 700;
+      color: #0b4f42;
+      box-shadow: 0 6px 14px rgba(10, 20, 20, 0.06);
+      transition: transform 0.2s ease;
+    }
+
+    .size-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .note {
+      color: #4b6b62;
+      font-size: 14px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
+      h1 { font-size: 20px; }
+      .size-item { min-width: 90px; padding: 8px 10px; }
+      button { font-size: 14px; padding: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="companyTitle">
+    <h1 id="companyTitle">Visting Card<br>Shaambhavi Manufacturers Pvt Ltd</h1>
+    <div class="meta">पता: HSIIDC, 136B, सेक्टर 16, बहादुरगढ़, हरियाणा — 124508</div>
+    <div class="meta">📞 फ़ोन: 098733 63333</div>
+
+    <div class="line"></div>
+
+    <div class="info">
+      <div class="pill">उत्पाद: एल्युमिनियम बॉटल</div>
+      <div class="pill">सामग्री: एल्यूमिनियम</div>
+      <div class="pill">रेंज: 50 ग्राम → 25 लीटर</div>
+    </div>
+
+    <div class="actions">
+      <button id="speakDetailsBtn">🔊 विवरण सुनें</button>
+    </div>
+
+    <div class="sizes-row" id="sizesRow" role="list" aria-label="Bottle sizes"></div>
+
+    <div class="note">यह सभी बोतलें हम स्वयं बनाते हैं — एक बार हमें मौका ज़रूर दें।</div>
+  </div>
+
+  <script>
+    const company = {
+      name: "Shaambhavi Manufacturers Pvt Ltd ",
+      address: "HSIIDC, 136B, Sector 16, Bahadurgarh, Haryana 124508",
+      phone: "098733 63333"
+    };
+
+    const sizes = [
+      "50 ग्राम", "100 ग्राम", "250 ग्राम", "500 ग्राम",
+      "1 लीटर", "2 लीटर", "5 लीटर", "10 लीटर",
+      "15 लीटर", "20 लीटर", "25 लीटर"  
+    ]; 
+
+    const sizesRow = document.getElementById('sizesRow');
+    sizes.forEach(s => {
+      const div = document.createElement('div');
+      div.className = 'size-item';
+      div.textContent = s;
+      sizesRow.appendChild(div);
+    });
+
+    const detailsText = ` "Shaambhavi Manufacturers Pvt Ltd में आपका स्वागत है",
+      हमारा address है: "HSIIDC, 136B, Sector 16, Bahadurgarh, Haryana पिन कोड है 124508",
+      phone: "098733 63333"
+    
+    नमस्कार! हम शाम्भवी मैन्युफैक्चरर से बात कर रहे हैं!
+    हमारी कंपनी हर प्रकार की एल्युमिनियम बॉटल बनाती है।
+    हम हर साइज की बॉटल तैयार करते हैं — छोटी से लेकर बड़ी तक।
+    हमारी बॉटलों की क्वालिटी बहुत बढ़िया है।
+    हम जो बॉटलें बनाते हैं, वो इस प्रकार हैं।
+    ${sizes.join(", ")}।
+    ये सभी बॉटलें हम बनाते हैं, एक बार हमें मौका ज़रूर दें।
+    धन्यवाद।`;
+
+    function pickHindiVoice() {
+      const all = window.speechSynthesis.getVoices() || [];
+      if (!all.length) return null;
+      return all.find(x => /hi-IN/i.test(x.lang) || /Hindi/i.test(x.name)) || all.find(x => /en-IN/i.test(x.lang)) || all[0];
+    }
+
+    function speak(text) {
+      if (!('speechSynthesis' in window)) {
+        alert('Speech Synthesis आपके ब्राउज़र में उपलब्ध नहीं है।');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      const voice = pickHindiVoice();
+      if (voice) utter.voice = voice;
+      utter.lang = 'hi-IN';
+      utter.rate = 0.95;
+      utter.pitch = 1.0;
+      window.speechSynthesis.speak(utter);
+    }
+
+    document.getElementById('speakDetailsBtn').addEventListener('click', () => speak(detailsText));
+  </script>
+</body>
+</html>
